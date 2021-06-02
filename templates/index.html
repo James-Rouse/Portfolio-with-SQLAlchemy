@@ -4,7 +4,7 @@
         <section class="header">
             <h1>Python Developer</h1>
             <p>A short one-liner about your love of coding.</p>
-            <img src="https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_1280.jpg" alt="Headshot of myself">
+            <img src="https://i.pinimg.com/originals/e8/8e/e8/e88ee8e3917f3bd6a99e3de29966f73b.jpg" alt="Headshot of myself">
         </section>
         <section id="about">
             <h2>About Me</h2>
@@ -34,66 +34,21 @@
             <i class="fas fa-file-code"></i>
             <h2>Projects</h2>
             <div id="project-list">
-                <div id="project1" class="a-project">
-                    <h3>Project Title</h3>
-                    <a href="#" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        Pastry wafer chocolate cake caramels. 
-                        Gummi bears pudding sugar plum macaroon. 
-                    </p>
-                    <p>
-                        Skills: Pastry wafer chocolate cake caramels. 
-                        Gummi bears pudding sugar plum macaroon. 
-                    </p>
-                </div>
-                <div id="project2" class="a-project">
-                    <h3>Project Title</h3>
-                    <a href="#" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        Pastry wafer chocolate cake caramels. 
-                        Gummi bears pudding sugar plum macaroon. 
-                    </p>
-                    <p>
-                        Skills: Pastry wafer chocolate cake caramels. 
-                        Gummi bears pudding sugar plum macaroon. 
-                    </p>
-                </div>
-                <div id="project3" class="a-project">
-                    <h3>Project Title</h3>
-                    <a href="#" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        Pastry wafer chocolate cake caramels. 
-                        Gummi bears pudding sugar plum macaroon. 
-                    </p>
-                    <p>
-                        Skills: Pastry wafer chocolate cake caramels. 
-                        Gummi bears pudding sugar plum macaroon. 
-                    </p>
-                </div>
-                <div id="project4" class="a-project">
-                    <h3>Project Title</h3>
-                    <a href="#" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        Pastry wafer chocolate cake caramels. 
-                        Gummi bears pudding sugar plum macaroon. 
-                    </p>
-                    <p>
-                        Skills: Pastry wafer chocolate cake caramels. 
-                        Gummi bears pudding sugar plum macaroon. 
-                    </p>
-                </div>
+                {% for project in portfolio %}
+                    <div id="project1" class="a-project">
+                        <h3>{{ project.title }}</h3>
+                        <a href="{{ project.github_repo }}" class="github-btn">
+                            <i class="fab fa-github"></i>
+                            View on GitHub
+                        </a>
+                        <p>
+                            {{ project.description }}
+                        </p>
+                        <p>
+                            {{ project.skills_practiced }}
+                        </p>
+                    </div>
+                {% endfor %}
             </div>
             <div id="triangle4"></div>
         </section>

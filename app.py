@@ -7,6 +7,11 @@ def portolio_index():
     portfolio = Project.query.all()
     return render_template("index.html", portfolio=portfolio)
 
+@app.route("/about")
+def about():
+    """Display about page."""
+    return render_template("about.html")
+
 @app.route("/project/<id>")
 def project_details():
     """Display details of a project."""
@@ -15,12 +20,12 @@ def project_details():
 @app.route("/project/new")
 def new_project():
     """Add a new project."""
-    pass
+    return render_template("projectform.html")
 
 @app.route("/project/<id>/edit")
 def edit_project():
     """Edit a project."""
-    pass
+    return render_template("projectform.html")
 
 @app.route("/delete/<id>")
 def delete_project(id):

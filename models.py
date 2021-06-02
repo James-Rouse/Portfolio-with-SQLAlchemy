@@ -13,23 +13,23 @@ class Project(db.Model):
 
     __tablename__ = "project"
 
-    project_id = db.Column("ID", db.Integer, primary_key=True)
-    project_title = db.Column("Title", db.String)
+    id = db.Column("ID", db.Integer, primary_key=True)
+    title = db.Column("Title", db.String)
     date_completed = db.Column("Date", db.Date)
-    project_description = db.Column("Description", db.String)
+    description = db.Column("Description", db.String)
     skills_practiced = db.Column("Skills Practiced", db.String)
     github_repo = db.Column("GitHub Repo", db.String)
 
     def __repr__(self):
         """Return printable representation of Project."""
         return f"""\n----------
-                \rProject ID: {self.project_id}
+                \rProject ID: {self.id}
                 \r----------
-                \Project Title: {self.project_title}
+                \Project Title: {self.title}
                 \r----------
                 \Date Completed: {self.date_completed}
                 \r----------
-                \Description: {self.project_description}
+                \Description: {self.description}
                 \r----------
                 \Skills practiced: {self.skills_practiced}
                 \r----------
