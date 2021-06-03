@@ -5,23 +5,23 @@
 {% endblock %}
 {% block content %}
         <section class="header">
-            <h1>New Project</h1>
+            <h1>Edit Project</h1>
         </section>
         <section id="form">
-            <form action="{{ url_for('new_project') }}" method="POST">
+            <form action="{{ url_for('edit_project', id=project.id) }}" method="POST">
                 <label for="title">Project Title</label>
-                <input type="text" name="title" id="title" placeholder="Project Name" required>
+                <input type="text" name="title" id="title" placeholder="{{ project.title }}" required>
                 <label for="date">Completion Month/Year</label>
                 <input type="month" name="date" id="date" required>
                 <label for="day">Completion Day</label>
-                <input type="day" name="day" id="day" placeholder="Day" required>
+                <input type="day" name="day" id="day" placeholder="{{ project.date_completed }}" required>
                 <label for="description">Description</label>
-                <textarea name="description" id="description" cols="30" rows="20" placeholder="Description" required></textarea>
+                <textarea name="description" id="description" cols="30" rows="20" placeholder="{{ project.description }}" required></textarea>
                 <label for="skills-list" id="skills-label">Skills</label>
                 <p>Separate each skill by a comma</p>
-                <textarea name="skills" id="skills-list" cols="30" rows="10" placeholder="Skill, Skill" required></textarea>
+                <textarea name="skills" id="skills-list" cols="30" rows="10" placeholder="{{ project.skills_practiced }}" required></textarea>
                 <label for="github">GitHub Link</label>
-                <input type="url" name="github" id="github" placeholder="Link to the repo" required>
+                <input type="url" name="github" id="github" placeholder="{{ project.github_repo }}" required>
                 <div>
                     <button type="reset">Cancel</button>
                     <button type="submit">Submit</button>

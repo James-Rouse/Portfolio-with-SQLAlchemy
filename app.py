@@ -54,10 +54,25 @@ def new_project():
         return redirect(url_for("portfolio_index"))
     return render_template("projectform.html")
 
-@app.route("/project/<id>/edit")
-def edit_project():
+@app.route("/project/<id>/edit", methods=['GET', 'POST'])
+def edit_project(id):
     """Edit a project."""
-    return render_template("projectform.html")
+    project = Project.query.get(id)
+    if request.form:
+        split_month_and_year = request.form["date"].split("-")
+        year = int(split_month_and_year[0])
+        month = int(split_month_and_year[1])
+        day = int(request.form["day"])
+        project.title = request.form["title"]
+        project.date_completed = datetime.datetime(year, month, day)
+        project.description = request.form["description"]
+        project.skills_practiced = request.form["skills"]
+        project.github_repo = request.form["github"]
+        db.session.commit()
+        return redirect(url_for("portfolio_index"))
+    return render_template("editform.html", project=project)
+
+
 
 @app.route("/projects/<id>/delete")
 def delete_project(id):
