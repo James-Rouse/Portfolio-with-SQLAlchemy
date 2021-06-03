@@ -455,6 +455,10 @@ Form
     width: 250px;
 }
 
+#form input[type='day'] {
+    width: 250px;
+}
+
 #form textarea {
     padding-top: 10px;
     height: 200px;

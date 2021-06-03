@@ -12,7 +12,7 @@ a database and displayed on the homepage.
 """
 from flask import render_template, url_for, request, redirect
 from models import db, Project, app
-from datetime import datetime
+import datetime
 
 @app.route("/")
 def portfolio_index():
@@ -39,15 +39,16 @@ def project_details(id):
 def new_project():
     """Add a new project."""
     if request.form:
-        split_date = request.form["date"].split("-")
-        year = int(split_date[0])
-        month = int(split_date[1])
+        split_month_and_year = request.form["date"].split("-")
+        year = int(split_month_and_year[0])
+        month = int(split_month_and_year[1])
+        day = int(request.form["day"])
         new_project = Project(title=request.form["title"],
-                              date_completed=datetime.strptime(f'{year}-{month}', '%Y-%m').date(),
+                              date_completed=datetime.datetime(year,
+                              month, day),
                               description=request.form["description"],
                               skills_practiced=request.form["skills"],
                               github_repo=request.form["github"])
-        # https://stackoverflow.com/questions/34646025/specify-a-datetime-date-without-a-day-in-python
         db.session.add(new_project)
         db.session.commit()
         return redirect(url_for("portfolio_index"))
