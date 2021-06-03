@@ -74,10 +74,13 @@ def edit_project(id):
 
 
 
-@app.route("/projects/<id>/delete")
+@app.route("/projects/<id>/delete", methods=['GET', 'POST'])
 def delete_project(id):
     """Delete a project."""
-    pass
+    project = Project.query.get(id)
+    db.session.delete(project)
+    db.session.commit()
+    return redirect(url_for("portfolio_index"))
 
 
 if __name__ == "__main__":
