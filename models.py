@@ -1,7 +1,6 @@
+"""Contains Project model class and associated code."""
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import datetime
-
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///portfolio.db"
@@ -17,8 +16,8 @@ class Project(db.Model):
     title = db.Column("Title", db.String())
     date_completed = db.Column("Date", db.Date)
     description = db.Column("Description", db.String())
-    skills_practiced = db.Column("Skills Practiced", db.String())
-    github_repo = db.Column("GitHub Repo", db.String())
+    skills = db.Column("Skills Practiced", db.String())
+    github = db.Column("GitHub Repo", db.String())
 
     def __repr__(self):
         """Return printable representation of Project."""
@@ -33,5 +32,5 @@ class Project(db.Model):
                 \r----------
                 \Skills practiced: {self.skills_practiced}
                 \r----------
-                \rGithub Repo: {self.github_repo}
+                \rGithub Repo: {self.github}
                 \r----------\n"""

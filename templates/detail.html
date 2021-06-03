@@ -7,16 +7,13 @@
         <section class="header">
             <h1>{{ project.title }}</h1>
             <p>{{ project.date_completed }}</p>
-            <a href="{{ project.github_repo }}" class="github-btn">
+            <a href="{{ project.github }}" class="github-btn">
                 <i class="fab fa-github"></i>
                 View on GitHub
             </a>
             <ul class="project-skills">
                 <div>
-                    <li>Catching exceptions</li>
-                    <li>Creating a loop</li>
-                    <li>Accepting user input</li>
-                    <li>Conditional statements</li>
+                    <li>Skills Used: {{ project.skills }}</li>
                 </div>
             </ul>
         </section>

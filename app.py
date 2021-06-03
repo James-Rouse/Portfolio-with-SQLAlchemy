@@ -14,26 +14,26 @@ from flask import render_template, url_for, request, redirect
 from models import db, Project, app
 import datetime
 
+
 @app.route("/")
 def portfolio_index():
     """Portfolio homepage/index."""
     portfolio = Project.query.all()
     return render_template("index.html", portfolio=portfolio)
 
+
 @app.route("/about")
 def about_author():
     """Display author's about page."""
     return render_template("about.html")
 
-@app.route("/#skill")
-def skills_section():
-    return render_template("index.html")
 
 @app.route("/project/<id>")
 def project_details(id):
     """Display details of a project."""
     project = Project.query.get_or_404(id)
     return render_template("detail.html", project=project)
+
 
 @app.route("/project/new", methods=['GET', 'POST'])
 def new_project():
@@ -47,12 +47,13 @@ def new_project():
                               date_completed=datetime.datetime(year,
                               month, day),
                               description=request.form["description"],
-                              skills_practiced=request.form["skills"],
-                              github_repo=request.form["github"])
+                              skills=request.form["skills"],
+                              github=request.form["github"])
         db.session.add(new_project)
         db.session.commit()
         return redirect(url_for("portfolio_index"))
     return render_template("projectform.html")
+
 
 @app.route("/project/<id>/edit", methods=['GET', 'POST'])
 def edit_project(id):
@@ -66,12 +67,11 @@ def edit_project(id):
         project.title = request.form["title"]
         project.date_completed = datetime.datetime(year, month, day)
         project.description = request.form["description"]
-        project.skills_practiced = request.form["skills"]
-        project.github_repo = request.form["github"]
+        project.skills = request.form["skills"]
+        project.github = request.form["github"]
         db.session.commit()
         return redirect(url_for("portfolio_index"))
     return render_template("editform.html", project=project)
-
 
 
 @app.route("/projects/<id>/delete", methods=['GET', 'POST'])
@@ -82,8 +82,10 @@ def delete_project(id):
     db.session.commit()
     return redirect(url_for("portfolio_index"))
 
+
 @app.errorhandler(404)
 def not_found(error):
+    """Display 404 error page."""
     return render_template("404.html", msg=error), 404
 
 

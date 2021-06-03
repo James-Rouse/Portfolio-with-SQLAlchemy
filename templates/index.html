@@ -3,7 +3,7 @@
 {% block content %}
         <section class="header">
             <h1>Python Developer</h1>
-            <p>A short one-liner about your love of coding.</p>
+            <p>I couldn't get a pet python, so this was my best alternative.</p>
             <img src="https://i.pinimg.com/originals/e8/8e/e8/e88ee8e3917f3bd6a99e3de29966f73b.jpg" alt="Headshot of myself">
         </section>
         <section id="about">
@@ -37,7 +37,7 @@
                 {% for project in portfolio %}
                     <div id="project1" class="a-project">
                         <h3>{{ project.title }}</h3>
-                        <a href="{{ project.github_repo }}" class="github-btn">
+                        <a href="{{ project.github }}" class="github-btn">
                             <i class="fab fa-github"></i>
                             View on GitHub
                         </a>
@@ -45,7 +45,7 @@
                             {{ project.description }}
                         </p>
                         <p>
-                            {{ project.skills_practiced }}
+                            {{ project.skills }}
                         </p>
                     </div>
                 {% endfor %}

@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
-{% block link %}
+<!-- {% block link %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-{% endblock %}
+{% endblock %} -->
 {% block content %}
         <section class="header">
             <h1>Edit Project</h1>
@@ -19,9 +19,9 @@
                 <textarea name="description" id="description" cols="30" rows="20" placeholder="{{ project.description }}" required></textarea>
                 <label for="skills-list" id="skills-label">Skills</label>
                 <p>Separate each skill by a comma</p>
-                <textarea name="skills" id="skills-list" cols="30" rows="10" placeholder="{{ project.skills_practiced }}" required></textarea>
+                <textarea name="skills" id="skills-list" cols="30" rows="10" placeholder="{{ project.skills }}" required></textarea>
                 <label for="github">GitHub Link</label>
-                <input type="url" name="github" id="github" placeholder="{{ project.github_repo }}" required>
+                <input type="url" name="github" id="github" placeholder="{{ project.github }}" required>
                 <div>
                     <button type="reset">Cancel</button>
                     <button type="submit">Submit</button>
