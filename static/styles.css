@@ -671,7 +671,7 @@ Media Queries
     .header .project-skills {
         -webkit-column-count: 2;  /* Chrome/Opera, Safari */
         -moz-column-count: 2; /* Mozilla Firefox */
-        column-count: 2;
+        column-count: 1;
         max-width: 500px;
     }
 
