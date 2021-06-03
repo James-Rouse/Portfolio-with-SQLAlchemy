@@ -14,11 +14,11 @@ class Project(db.Model):
     __tablename__ = "project"
 
     id = db.Column("ID", db.Integer, primary_key=True)
-    title = db.Column("Title", db.String)
+    title = db.Column("Title", db.String())
     date_completed = db.Column("Date", db.Date)
-    description = db.Column("Description", db.String)
-    skills_practiced = db.Column("Skills Practiced", db.String)
-    github_repo = db.Column("GitHub Repo", db.String)
+    description = db.Column("Description", db.String())
+    skills_practiced = db.Column("Skills Practiced", db.String())
+    github_repo = db.Column("GitHub Repo", db.String())
 
     def __repr__(self):
         """Return printable representation of Project."""
