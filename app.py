@@ -25,19 +25,22 @@ def portfolio_index():
 @app.route("/about")
 def about_author():
     """Display author's about page."""
-    return render_template("about.html")
+    portfolio = Project.query.all()
+    return render_template("about.html", portfolio=portfolio)
 
 
 @app.route("/project/<id>")
 def project_details(id):
     """Display details of a project."""
+    portfolio = Project.query.all()
     project = Project.query.get_or_404(id)
-    return render_template("detail.html", project=project)
+    return render_template("detail.html", project=project, portfolio=portfolio)
 
 
 @app.route("/project/new", methods=['GET', 'POST'])
 def new_project():
     """Add a new project."""
+    portfolio = Project.query.all()
     if request.form:
         split_month_and_year = request.form["date"].split("-")
         year = int(split_month_and_year[0])
@@ -52,12 +55,13 @@ def new_project():
         db.session.add(new_project)
         db.session.commit()
         return redirect(url_for("portfolio_index"))
-    return render_template("projectform.html")
+    return render_template("projectform.html", portfolio=portfolio)
 
 
 @app.route("/project/<id>/edit", methods=['GET', 'POST'])
 def edit_project(id):
     """Edit a project."""
+    portfolio = Project.query.all()
     project = Project.query.get_or_404(id)
     if request.form:
         split_month_and_year = request.form["date"].split("-")
@@ -71,7 +75,7 @@ def edit_project(id):
         project.github = request.form["github"]
         db.session.commit()
         return redirect(url_for("portfolio_index"))
-    return render_template("editform.html", project=project)
+    return render_template("editform.html", project=project, portfolio=portfolio)
 
 
 @app.route("/projects/<id>/delete", methods=['GET', 'POST'])
@@ -86,7 +90,8 @@ def delete_project(id):
 @app.errorhandler(404)
 def not_found(error):
     """Display 404 error page."""
-    return render_template("404.html", msg=error), 404
+    portfolio = Project.query.all()
+    return render_template("404.html", msg=error, portfolio=portfolio), 404
 
 
 if __name__ == "__main__":
